@@ -18,7 +18,7 @@
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:src="@drawable/ic_launcher_background" />
+            android:src="@mipmap/ic_launcher_foreground" />
 
         <LinearLayout
             android:layout_width="300dp"
@@ -32,6 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:text="plantillaId"
                 android:layout_weight="1"
                 android:fontFamily="@font/caveatvariablefontwght"
                 android:textAlignment="center"
@@ -43,6 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:text="plantillaCampo1"
                 android:layout_weight="1"
                 android:fontFamily="@font/caveatvariablefontwght"
                 android:textAlignment="center"
@@ -54,6 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:text="plantillaCampo2"
                 android:layout_weight="1"
                 android:fontFamily="@font/caveatvariablefontwght"
                 android:textAlignment="center"
@@ -65,6 +68,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:text="plantillaCampo3"
                 android:layout_weight="1"
                 android:fontFamily="@font/caveatvariablefontwght"
                 android:textAlignment="center"

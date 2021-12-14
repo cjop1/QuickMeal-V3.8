@@ -12,22 +12,23 @@ import android.widget.TextView;
 
 import com.grupo4.quickmeal_v28_def.R;
 import com.grupo4.quickmeal_v28_def.modelo.Combo;
+import com.grupo4.quickmeal_v28_def.modelo.Carta;
 
 import java.util.ArrayList;
 
 public class ComboAdaptador extends BaseAdapter {
-
     Context context;
     ArrayList<Combo> combos;
     LayoutInflater inflater;
-    @Override
-    public int getCount() {
-        return 0;
-    }
 
     public ComboAdaptador(Context context, ArrayList<Combo> combos) {
         this.context = context;
         this.combos = combos;
+    }
+
+    @Override
+    public int getCount() {
+        return combos.size() ;
     }
 
     @Override
@@ -49,7 +50,7 @@ public class ComboAdaptador extends BaseAdapter {
             convertView = inflater.inflate(R.layout.grid_general, null);
         }
 
-        ImageView imageView = convertView.findViewById(R.id.elemento);
+        ImageView imageView = convertView.findViewById(R.id.imageGrid);
         TextView campoId = convertView.findViewById(R.id.txtId);
         TextView campo1 = convertView.findViewById(R.id.txtcampo1);
         TextView campo2 = convertView.findViewById(R.id.txtcampo2);
@@ -61,12 +62,11 @@ public class ComboAdaptador extends BaseAdapter {
 
         campoId.setText("ID:"+ combo.getId());
         campo1.setText(combo.getNombre());
-        imageView.setImageBitmap(bitmap);
         campo2.setText(combo.getDescripcion());
         campo3.setText(combo.getPrecio());
+        imageView.setImageBitmap(bitmap);
 
         return convertView;
-
     }
 
 }

@@ -1,20 +1,20 @@
 package com.grupo4.quickmeal_v28_def.modelo;
 
-public class Combo {
+public class Carta {
     private int id;
     private String nombre;
     private String descripcion;
     private String precio;
     private byte[] image;
 
-    public Combo(int id, String name, String description, String price, byte[] image) {
+    public Carta(int id, String name, String description, String price, byte[] image) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.image = image;
     }
-    public Combo() {}
+    public Carta() {}
 
     public int getId() {
         return id;

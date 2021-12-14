@@ -3,7 +3,6 @@ package com.grupo4.quickmeal_v28_def.adaptadores;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,24 +11,23 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.grupo4.quickmeal_v28_def.R;
-import com.grupo4.quickmeal_v28_def.modelo.Producto;
+import com.grupo4.quickmeal_v28_def.modelo.Carta;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
-public class ProductoAdaptador extends BaseAdapter {
+public class CartaAdaptador extends BaseAdapter {
     Context context;
-    ArrayList<Producto> productos;
+    ArrayList<Carta> cartas;
     LayoutInflater inflater;
 
-    public ProductoAdaptador(Context context, ArrayList<Producto> productos) {
+    public CartaAdaptador(Context context, ArrayList<Carta> cartas) {
         this.context = context;
-        this.productos = productos;
+        this.cartas = cartas;
     }
 
     @Override
     public int getCount() {
-        return productos.size() ;
+        return cartas.size() ;
     }
 
     @Override
@@ -44,28 +42,29 @@ public class ProductoAdaptador extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (inflater == null){
+        if(inflater == null){
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
-        if (convertView == null){
+        if(convertView == null){
             convertView = inflater.inflate(R.layout.grid_general, null);
         }
 
-        ImageView imageView = convertView.findViewById(R.id.elemento);
+        ImageView imageView = convertView.findViewById(R.id.imageGrid);
         TextView campoId = convertView.findViewById(R.id.txtId);
         TextView campo1 = convertView.findViewById(R.id.txtcampo1);
         TextView campo2 = convertView.findViewById(R.id.txtcampo2);
         TextView campo3 = convertView.findViewById(R.id.txtcampo3);
 
-        Producto producto = productos.get(position);
-        byte[] image = producto.getImage();
+
+        Carta carta = cartas.get(position);
+        byte[] image = carta.getImage();
         Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0,image.length);
 
-        campoId.setText("ID:"+ producto.getId());
-        campo1.setText(producto.getNombre());
+        campoId.setText("ID:"+ carta.getId());
+        campo1.setText(carta.getNombre());
+        campo2.setText(carta.getDescripcion());
+        campo3.setText(carta.getPrecio());
         imageView.setImageBitmap(bitmap);
-        campo2.setText(producto.getDescripcion());
-        campo3.setText(producto.getPrecio());
 
         return convertView;
     }

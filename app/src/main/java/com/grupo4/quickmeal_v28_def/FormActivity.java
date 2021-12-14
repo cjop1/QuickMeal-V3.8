@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
@@ -20,6 +21,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.grupo4.quickmeal_v28_def.datos.DBHelper;
+
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
@@ -32,6 +36,14 @@ public class FormActivity extends AppCompatActivity {
     private ImageView imgInsertar;
 
     String name="";
+
+    private DBHelper dbHelper;
+
+    String campo1Insertar;
+    String campo2Insertar;
+    String campo3Insertar;
+    byte[] imageInsertar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,10 +60,11 @@ public class FormActivity extends AppCompatActivity {
         btnBuscar = (Button) findViewById(R.id.btnBuscar);
         btnInsertar = (Button) findViewById(R.id.btnInsertar);
         imgInsertar = (ImageView) findViewById(R.id.imgInsertar);
+        dbHelper = new DBHelper(getApplicationContext() );
 
         elemento.setText(name);
 
-        if(name.equals("CARTA")){
+        if(name.equals("CARTAS")){
             campo1.setHint("Nombre");
             campo2.setHint("Descripción");
             campo3.setHint("Precio");
@@ -60,7 +73,6 @@ public class FormActivity extends AppCompatActivity {
             campo1.setHint("Nombre");
             campo2.setHint("Descripción");
             campo3.setHint("Precio");
-            campo3.setInputType(InputType.TYPE_CLASS_TEXT);
         }
 
         btnBuscar.setOnClickListener(new View.OnClickListener() {
@@ -77,10 +89,40 @@ public class FormActivity extends AppCompatActivity {
         btnInsertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try {
+                    llenarCampos();
+                    dbHelper.insertarData(campo1Insertar, campo2Insertar, campo3Insertar, imageInsertar, name);
+                    limpiarCampos();
+                    Toast.makeText(getApplicationContext(), "Insert success", Toast.LENGTH_SHORT).show();
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
 
+    }
+
+    public byte[] imageViewToByte(ImageView imageView){
+        Bitmap bitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+        return byteArray;
+    }
+
+    public void llenarCampos(){
+        campo1Insertar = campo1.getText().toString().trim();
+        campo2Insertar = campo2.getText().toString().trim();
+        campo3Insertar = campo3.getText().toString().trim();
+        imageInsertar = imageViewToByte(imgInsertar);
+    }
+
+    public void limpiarCampos(){
+        campo1.setText("");
+        campo2.setText("");
+        campo3.setText("");
+        imgInsertar.setImageResource(R.mipmap.ic_launcher);
     }
 
     @Override
