@@ -13,7 +13,7 @@
 
 
         <ImageView
-            android:id="@+id/imageGrid"
+            android:id="@+id/imageRest"
             android:layout_width="300dp"
             android:layout_height="150dp"
             android:layout_gravity="center"
@@ -28,11 +28,11 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtGralId"
+                android:id="@+id/txtRestId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/txtGralId"
+                android:text="@string/txtRestId"
                 android:layout_weight="1"
                 android:fontFamily="@font/caveatvariablefontwght"
                 android:textAlignment="center"
@@ -40,11 +40,11 @@
                 android:textSize="30sp"/>
 
             <TextView
-                android:id="@+id/txtGralProducto"
+                android:id="@+id/txtRestRestaurante"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/txtGralProducto"
+                android:text="@string/txtRestRestaurante"
                 android:layout_weight="1"
                 android:fontFamily="@font/caveatvariablefontwght"
                 android:textAlignment="center"
@@ -52,11 +52,11 @@
                 android:textSize="30sp" />
 
             <TextView
-                android:id="@+id/txtGralDescripcion"
+                android:id="@+id/txtRestDireccion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/txtGralDescripcion"
+                android:text="@string/txtRestDireccion"
                 android:layout_weight="1"
                 android:fontFamily="@font/caveatvariablefontwght"
                 android:textAlignment="center"
@@ -64,11 +64,11 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/txtGralPrecio"
+                android:id="@+id/txtRestLocacion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/txtGralPrecio"
+                android:text="@string/txtRestLocacion"
                 android:layout_weight="1"
                 android:fontFamily="@font/caveatvariablefontwght"
                 android:textAlignment="center"

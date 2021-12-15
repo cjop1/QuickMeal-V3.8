@@ -41,12 +41,21 @@ public class DBHelper extends SQLiteOpenHelper {
                 "PRECIO VARCHAR," +
                 "IMAGE BLOB" +
                 ")");
+
+        db.execSQL("CREATE TABLE RESTAURANTES(" +
+                "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "RESTAURANTE VARCHAR," +
+                "DIRECCI0N VARCHAR," +
+                "LOCACION VARCHAR," +
+                "IMAGE BLOB" +
+                ")");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS CARTAS");
         db.execSQL("DROP TABLE IF EXISTS COMBOS");
+        db.execSQL("DROP TABLE IF EXISTS RESTAURANTES");
     }
 
     /**

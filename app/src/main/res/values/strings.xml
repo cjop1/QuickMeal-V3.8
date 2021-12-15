@@ -76,4 +76,28 @@
     <string name="descrip_combos_6">Cuatro empanadas con gaseosa 1000ml </string>
     <string name="precio_combos_6">$10.000</string>
 
+    <!--GRID CARTAS y COMBOS PARA VISUALIZAR RESULTADOS-->
+
+    <string name="txtGralId">Id</string>
+    <string name="txtGralProducto">Nombre Producto</string>
+    <string name="txtGralDescripcion">Descripción</string>
+    <string name="txtGralPrecio">Precio</string>
+
+
+    <!--GRID RESTAURANTES PARA VISUALIZAR RESULTADOS-->
+
+    <string name="txtRestId">Id</string>
+    <string name="txtRestRestaurante">Nombre Restaurante</string>
+    <string name="txtRestDireccion">Dirección</string>
+    <string name="txtRestLocacion">Coordenadas</string>
+
+
+    <!--ACTIVITY FORM PARA EJECUTAR CRUD-->
+
+    <string name="editCampo1">Campo 1</string>
+    <string name="editCampo2">Campo 2</string>
+    <string name="editCampo3">Campo 3</string>
+    <string name="btnBuscar">Buscar</string>
+    <string name="btnInsertar">Insertar</string>
+
 </resources>

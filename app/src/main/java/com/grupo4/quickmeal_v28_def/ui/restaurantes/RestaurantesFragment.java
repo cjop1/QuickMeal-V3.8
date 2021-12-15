@@ -13,11 +13,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.Toast;
 
 import com.grupo4.quickmeal_v28_def.FormActivity;
 import com.grupo4.quickmeal_v28_def.R;
+import com.grupo4.quickmeal_v28_def.adaptadores.CartaAdaptador;
+import com.grupo4.quickmeal_v28_def.adaptadores.RestauranteAdaptador;
 import com.grupo4.quickmeal_v28_def.databinding.FragmentRestaurantesBinding;
+import com.grupo4.quickmeal_v28_def.datos.DBHelper;
+import com.grupo4.quickmeal_v28_def.modelo.Restaurante;
+
+import java.util.ArrayList;
 
 public class RestaurantesFragment extends Fragment {
 
@@ -25,6 +32,7 @@ public class RestaurantesFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
 
         binding = FragmentRestaurantesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -51,12 +59,11 @@ public class RestaurantesFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
+        switch (item.getItemId()){
             case R.id.action_add:
                 Intent intent = new Intent(getContext(), FormActivity.class);
-                intent.putExtra("name", "RESTAURANTES");
+                intent.putExtra("name","RESTAURANTES");
                 getActivity().startActivity(intent);
-                Toast.makeText(getContext(), "Hola, estamos cerca de tí", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

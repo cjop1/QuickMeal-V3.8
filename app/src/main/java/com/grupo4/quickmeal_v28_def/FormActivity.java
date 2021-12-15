@@ -54,12 +54,12 @@ public class FormActivity extends AppCompatActivity {
         Intent intent = getIntent();
         name= intent.getStringExtra("name");
 
+        btnBuscar = (Button) findViewById(R.id.btnBuscar);
+        btnInsertar = (Button) findViewById(R.id.btnInsertar);
         campo1 = (EditText)findViewById(R.id.editCampo1);
         campo2 = (EditText)findViewById(R.id.editCampo2);
         campo3 = (EditText)findViewById(R.id.editCampo3);
-        btnBuscar = (Button) findViewById(R.id.btnBuscar);
-        btnInsertar = (Button) findViewById(R.id.btnInsertar);
-        imgInsertar = (ImageView) findViewById(R.id.imgInsertar);
+        imgInsertar = (ImageView) findViewById(R.id.imgFormulario);
         dbHelper = new DBHelper(getApplicationContext() );
 
         elemento.setText(name);
@@ -73,6 +73,11 @@ public class FormActivity extends AppCompatActivity {
             campo1.setHint("Nombre");
             campo2.setHint("Descripción");
             campo3.setHint("Precio");
+
+        }else if(name.equals("RESTAURANTES")){
+            campo1.setHint("Restaurante");
+            campo2.setHint("Direccion");
+            campo3.setHint("Locacion");
         }
 
         btnBuscar.setOnClickListener(new View.OnClickListener() {

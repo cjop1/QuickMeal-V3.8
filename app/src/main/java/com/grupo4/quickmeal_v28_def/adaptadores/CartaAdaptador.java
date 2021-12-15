@@ -50,21 +50,21 @@ public class CartaAdaptador extends BaseAdapter {
         }
 
         ImageView imageView = convertView.findViewById(R.id.imageGrid);
-        TextView campoId = convertView.findViewById(R.id.txtId);
-        TextView campo1 = convertView.findViewById(R.id.txtcampo1);
-        TextView campo2 = convertView.findViewById(R.id.txtcampo2);
-        TextView campo3 = convertView.findViewById(R.id.txtcampo3);
+        TextView campoId = convertView.findViewById(R.id.txtGralId);
+        TextView campoProducto = convertView.findViewById(R.id.txtGralProducto);
+        TextView campoDescripcion = convertView.findViewById(R.id.txtGralDescripcion);
+        TextView campoPrecio = convertView.findViewById(R.id.txtGralPrecio);
 
 
         Carta carta = cartas.get(position);
         byte[] image = carta.getImage();
         Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0,image.length);
 
-        campoId.setText("ID:"+ carta.getId());
-        campo1.setText(carta.getNombre());
-        campo2.setText(carta.getDescripcion());
-        campo3.setText(carta.getPrecio());
         imageView.setImageBitmap(bitmap);
+        campoId.setText("ID:"+ carta.getId());
+        campoProducto.setText(carta.getNombre());
+        campoDescripcion.setText(carta.getDescripcion());
+        campoPrecio.setText(carta.getPrecio());
 
         return convertView;
     }

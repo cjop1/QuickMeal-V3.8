@@ -12,23 +12,23 @@ import android.widget.TextView;
 
 import com.grupo4.quickmeal_v28_def.R;
 import com.grupo4.quickmeal_v28_def.modelo.Combo;
-import com.grupo4.quickmeal_v28_def.modelo.Carta;
+import com.grupo4.quickmeal_v28_def.modelo.Restaurante;
 
 import java.util.ArrayList;
 
-public class ComboAdaptador extends BaseAdapter {
+public class RestauranteAdaptador extends BaseAdapter {
     Context context;
-    ArrayList<Combo> combos;
+    ArrayList<Restaurante> restaurantes;
     LayoutInflater inflater;
 
-    public ComboAdaptador(Context context, ArrayList<Combo> combos) {
+    public RestauranteAdaptador(Context context, ArrayList<Restaurante> restaurantes) {
         this.context = context;
-        this.combos = combos;
+        this.restaurantes = restaurantes;
     }
 
     @Override
     public int getCount() {
-        return combos.size() ;
+        return restaurantes.size();
     }
 
     @Override
@@ -47,26 +47,24 @@ public class ComboAdaptador extends BaseAdapter {
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
         if (convertView == null){
-            convertView = inflater.inflate(R.layout.grid_general, null);
+            convertView = inflater.inflate(R.layout.grid_restaurantes, null);
         }
+        ImageView imageView = convertView.findViewById(R.id.imageRest);
+        TextView campoId = convertView.findViewById(R.id.txtRestId);
+        TextView campoRestaurante = convertView.findViewById(R.id.txtRestRestaurante);
+        TextView campoDireccion = convertView.findViewById(R.id.txtRestDireccion);
+        TextView campoLocacion = convertView.findViewById(R.id.txtRestLocacion);
 
-        ImageView imageView = convertView.findViewById(R.id.imageGrid);
-        TextView campoId = convertView.findViewById(R.id.txtGralId);
-        TextView campoProducto = convertView.findViewById(R.id.txtGralProducto);
-        TextView campoDescripcion = convertView.findViewById(R.id.txtGralDescripcion);
-        TextView campoPrecio = convertView.findViewById(R.id.txtGralPrecio);
-
-        Combo combo = combos.get(position);
-        byte[] image = combo.getImage();
+        Restaurante restaurante = restaurantes.get(position);
+        byte[] image = restaurante.getImage();
         Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0,image.length);
 
         imageView.setImageBitmap(bitmap);
-        campoId.setText("ID:"+ combo.getId());
-        campoProducto.setText(combo.getNombre());
-        campoDescripcion.setText(combo.getDescripcion());
-        campoPrecio.setText(combo.getPrecio());
+        campoId.setText(restaurante.getId());
+        campoRestaurante.setText(restaurante.getRestaurante());
+        campoDireccion.setText(restaurante.getDireccion());
+        campoLocacion.setText(restaurante.getLocacion());
 
-        return convertView;
+        return null;
     }
-
 }
