@@ -17,6 +17,7 @@ import com.grupo4.quickmeal_v28_def.modelo.Carta;
 import java.util.ArrayList;
 
 public class ComboAdaptador extends BaseAdapter {
+
     Context context;
     ArrayList<Combo> combos;
     LayoutInflater inflater;

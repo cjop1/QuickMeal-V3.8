@@ -34,22 +34,21 @@ public class CartaFragment extends Fragment {
     private ArrayList<Carta> cartas;
 
 
-        public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-            View root = inflater.inflate(R.layout.fragment_carta, container, false);
-            try {
-                casoUsoProducto = new CasoUsoProducto();
-                DBHelper = new DBHelper(getContext());
-                Cursor cursor = DBHelper.obtenerData(TABLE_NAME);
-                cartas = casoUsoProducto.llenarListaProductos(cursor);
-                gridView = (GridView) root.findViewById(R.id.gridCarta);
-                CartaAdaptador cartaAdaptador = new CartaAdaptador(root.getContext(), cartas);
-                gridView.setAdapter(cartaAdaptador);
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                         ViewGroup container, Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.fragment_carta, container, false);
+        try {
+            casoUsoProducto = new CasoUsoProducto();
+            DBHelper = new DBHelper(getContext());
+            Cursor cursor = DBHelper.obtenerData(TABLE_NAME);
+            cartas = casoUsoProducto.llenarListaProductos(cursor);
+            gridView = (GridView) root.findViewById(R.id.gridCarta);
+            CartaAdaptador cartaAdaptador = new CartaAdaptador(root.getContext(), cartas);
+            gridView.setAdapter(cartaAdaptador);
 
-            }catch (Exception e){
-                Toast.makeText(getContext(),e.toString(), Toast.LENGTH_SHORT).show();
-            }
-
+        }catch (Exception e){
+            Toast.makeText(getContext(),e.toString(), Toast.LENGTH_SHORT).show();
+        }
 
         return root;
     }

@@ -16,6 +16,7 @@ import com.grupo4.quickmeal_v28_def.modelo.Carta;
 import java.util.ArrayList;
 
 public class CartaAdaptador extends BaseAdapter {
+
     Context context;
     ArrayList<Carta> cartas;
     LayoutInflater inflater;
@@ -55,16 +56,15 @@ public class CartaAdaptador extends BaseAdapter {
         TextView campoDescripcion = convertView.findViewById(R.id.txtGralDescripcion);
         TextView campoPrecio = convertView.findViewById(R.id.txtGralPrecio);
 
-
         Carta carta = cartas.get(position);
         byte[] image = carta.getImage();
         Bitmap bitmap = BitmapFactory.decodeByteArray(image, 0,image.length);
 
-        imageView.setImageBitmap(bitmap);
         campoId.setText("ID:"+ carta.getId());
         campoProducto.setText(carta.getNombre());
         campoDescripcion.setText(carta.getDescripcion());
         campoPrecio.setText(carta.getPrecio());
+        imageView.setImageBitmap(bitmap);
 
         return convertView;
     }
