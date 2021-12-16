@@ -1,26 +1,28 @@
 package com.grupo4.quickmeal_v28_def.modelo;
 
 public class Combo {
-    private int id;
+    private String id;
     private String nombre;
     private String descripcion;
     private String precio;
     private byte[] image;
 
-    public Combo(int id, String name, String description, String price, byte[] image) {
+    public Combo() {
+    }
+
+    public Combo(String id, String nombre, String descripcion, String precio, byte[] image) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.image = image;
     }
-    public Combo() {}
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -28,15 +30,15 @@ public class Combo {
         return nombre;
     }
 
-    public void setNombre(String name) {
-        this.nombre = name;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(String description) {
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
@@ -44,8 +46,8 @@ public class Combo {
         return precio;
     }
 
-    public void setPrice(String price) {
-        this.precio = price;
+    public void setPrecio(String precio) {
+        this.precio = precio;
     }
 
     public byte[] getImage() {

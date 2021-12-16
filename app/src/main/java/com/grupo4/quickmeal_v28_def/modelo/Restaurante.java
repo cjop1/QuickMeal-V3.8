@@ -2,7 +2,7 @@ package com.grupo4.quickmeal_v28_def.modelo;
 
 public class Restaurante {
 
-    private int id;
+    private String id;
     private String restaurante;
     private String direccion;
     private String locacion;
@@ -11,7 +11,7 @@ public class Restaurante {
     public Restaurante() {
     }
 
-    public Restaurante(int id, String restaurante, String direccion, String locacion, byte[] image) {
+    public Restaurante(String id, String restaurante, String direccion, String locacion, byte[] image) {
         this.id = id;
         this.restaurante = restaurante;
         this.direccion = direccion;
@@ -19,11 +19,11 @@ public class Restaurante {
         this.image = image;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

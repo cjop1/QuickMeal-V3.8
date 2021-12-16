@@ -76,8 +76,8 @@ public class FormActivity extends AppCompatActivity {
 
         }else if(name.equals("RESTAURANTES")){
             campo1.setHint("Restaurante");
-            campo2.setHint("Direccion");
-            campo3.setHint("Locacion");
+            campo2.setHint("Dirección");
+            campo3.setHint("Locación");
         }
 
         btnBuscar.setOnClickListener(new View.OnClickListener() {
