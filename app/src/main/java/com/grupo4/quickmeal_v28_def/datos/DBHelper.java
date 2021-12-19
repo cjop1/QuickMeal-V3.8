@@ -1,10 +1,12 @@
 package com.grupo4.quickmeal_v28_def.datos;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
+import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 
@@ -69,13 +71,13 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    /**2. Obtener Producto by Id
+    //2. Obtener Producto by Id
 
-    public Cursor obtenerDataById(String id){
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM PRODUCTOS WHERE ID = "+id, null);
+    public Cursor obtenerDataById(String table, String id){
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM" + table + "WHERE ID = "+id, null);
         return cursor;
     }
-     **/
+
 
     //3. Insertar Producto
 
@@ -92,32 +94,24 @@ public class DBHelper extends SQLiteOpenHelper {
         statement.executeInsert();
     }
 
-    /**
+
     //4. Actualizar Producto
 
-    public void actualizarData(String ID, String PRODUCTO, byte[] IMAGE, String DESCRIPCION, String PRECIO){
-        String sql = "UPDATE PRODUCTOS " +
-                "SET PRODUCTO=?," +
-                "DESCRIPCION=?," +
-                "PRECIO=?," +
-                "IMAGE=?";
-        SQLiteStatement statement = sqLiteDatabase.compileStatement(sql);
-        statement.clearBindings();
-
-        statement.bindString(1, PRODUCTO);
-        statement.bindString(2, DESCRIPCION);
-        statement.bindString(3, PRECIO);
-        statement.bindBlob(4, IMAGE);
-
-        statement.executeUpdateDelete();
+    public void actualizarData(String table, String ID, String campo1, String campo2, String campo3, byte[] IMAGE){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("producto", campo1);
+        contentValues.put("descripcion", campo2);
+        contentValues.put("precio", campo3);
+        contentValues.put("image", IMAGE);
+        sqLiteDatabase.update(table, contentValues, "id=?", new String[]{ID});
     }
 
-   //5. Borrar Producto
 
-    public void deleteData(String id){
-        String[] args = new String[]{id};
-        sqLiteDatabase.delete("PRODUCTOS", "ID=?", args);
+    //5. Borrar Producto
+
+    public void deleteData(String table, String id){
+        sqLiteDatabase.execSQL("DELETE FROM " + table + " WHERE ID = "+id);
     }
-**/
+
 }
 

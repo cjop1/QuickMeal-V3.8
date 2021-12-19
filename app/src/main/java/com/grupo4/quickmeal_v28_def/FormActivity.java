@@ -8,6 +8,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -26,13 +27,14 @@ import com.grupo4.quickmeal_v28_def.datos.DBHelper;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class FormActivity extends AppCompatActivity {
 
     private final int REQUEST_CODE_GALLERY = 999;
     private TextView elemento;
-    private EditText campo1, campo2, campo3;
-    private Button btnBuscar, btnInsertar;
+    private EditText campo1, campo2, campo3, elementoId;
+    private Button btnBuscar, btnInsertar, btnConsultar, btnBorrar, btnActualizar;
     private ImageView imgInsertar;
 
     String name="";
@@ -56,9 +58,13 @@ public class FormActivity extends AppCompatActivity {
 
         btnBuscar = (Button) findViewById(R.id.btnBuscar);
         btnInsertar = (Button) findViewById(R.id.btnInsertar);
+        btnConsultar = (Button) findViewById(R.id.btnConsultar);
+        btnBorrar = (Button) findViewById(R.id.btnBorrar);
+        btnActualizar = (Button) findViewById(R.id.btnActualizar);
         campo1 = (EditText)findViewById(R.id.editCampo1);
         campo2 = (EditText)findViewById(R.id.editCampo2);
         campo3 = (EditText)findViewById(R.id.editCampo3);
+        elementoId = (EditText)findViewById(R.id.txtElementoId);
         imgInsertar = (ImageView) findViewById(R.id.imgFormulario);
         dbHelper = new DBHelper(getApplicationContext() );
 
@@ -103,6 +109,50 @@ public class FormActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
                 }
 
+            }
+        });
+
+        btnConsultar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Cursor cursor = dbHelper.obtenerDataById(name, elementoId.getText().toString().trim());
+                while (cursor.moveToNext()){
+                    campo1.setText(cursor.getString(1));
+                    campo2.setText(cursor.getString(2));
+                    campo3.setText(cursor.getString(3));
+                    byte[] img = cursor.getBlob(4);
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
+                    imgInsertar.setImageBitmap(bitmap);
+                }
+
+            }
+        });
+
+        btnActualizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                llenarCampos();
+                try {
+                    dbHelper.actualizarData(
+                            name,
+                            elementoId.getText().toString().trim(),
+                            campo1Insertar,
+                            campo2Insertar,
+                            campo3Insertar,
+                            imageInsertar
+                    );
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+        btnBorrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dbHelper.deleteData(name, elementoId.getText().toString().trim());
+                limpiarCampos();
             }
         });
 

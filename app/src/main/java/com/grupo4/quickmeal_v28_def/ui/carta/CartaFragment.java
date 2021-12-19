@@ -35,7 +35,7 @@ public class CartaFragment extends Fragment {
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
-                         ViewGroup container, Bundle savedInstanceState) {
+                             ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_carta, container, false);
         try {
             casoUsoProducto = new CasoUsoProducto();

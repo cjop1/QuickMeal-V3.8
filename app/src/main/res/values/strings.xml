@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">QuickMeal V2.8</string>
+    <string name="app_name">QuickMeal V3.8 CRUD</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Quick Meal</string>
     <string name="nav_header_subtitle">contacto@quickmeal.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_add">Agregar</string>
+    <string name="action_add">CRUD</string>
 
     <string name="toolbar_compartir">Compartir</string>
     <string name="toolbar_llamada">Llamada</string>
@@ -97,7 +97,11 @@
     <string name="editCampo1">Campo 1</string>
     <string name="editCampo2">Campo 2</string>
     <string name="editCampo3">Campo 3</string>
-    <string name="btnBuscar">Buscar</string>
-    <string name="btnInsertar">Insertar</string>
+    <string name="btnBuscar">Buscar imagen elemento</string>
+    <string name="btnInsertar">Insertar elemento</string>
+    <string name="btnConsultar">Consultar elemento</string>
+    <string name="btnActualizar">Actualizar elemento</string>
+    <string name="btnBorrar">Borrar elemento</string>
+    <string name="txtId">Id elemento</string>
 
 </resources>
